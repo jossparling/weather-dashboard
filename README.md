@@ -1,4 +1,16 @@
 # weather-dashboard
+The purpose of this application is to search for a city and pull up weather through the OpenWeather API
+
+# technologies
+HTML CSS JavaScript OpenWeather API
+
+# deployed link
+https://jossparling.github.io/weather-dashboard/
+
+# screenshot
+<img width="566" alt="Screen Shot 2022-06-15 at 3 43 07 PM" src="https://user-images.githubusercontent.com/102888399/173924283-54bb9317-7957-42f4-90ac-25c6bb7d42ce.png">
+
+
 
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city

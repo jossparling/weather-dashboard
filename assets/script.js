@@ -62,24 +62,10 @@ var getForecast = function(latitude, longitude) {
     .then(function(data) {
         console.log(data)
     })
+    .catch(function(error) {
+        alert("Unable to connect to Forecaster");
+    })
 }
-
-// var getWeatherForecast = function(city) {
-//     // format the one call api url
-//     var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=c9ef6e11c075f6d66c3446b98863ab2c";
-
-//     // make a get request to url
-//     fetch(apiUrl).then(function(response) {
-//         // request was successful
-//         if (response.ok) {
-//             response.json().then(function(data) {
-//                 displayForecast(data.items, city);
-//             });
-//         } else {
-//             alert("Error: " + response.statusText);
-//         }
-//     });
-// };
 
 // var displayForecast = function(forecast, searchTerm) {
 //     // check if api returned the forecast
@@ -99,6 +85,12 @@ var getForecast = function(latitude, longitude) {
 //     // append container to the dom
 //     forecastContainerEl.appendChild(forecastEl);
 // }
+
+//display forecast
+forecastContainerEl.innerHTML = "Temparature:" + " " + data.main.temp + " " + '\u00B0F';
+
+// append to page 
+forecastContainerEl.appendChild(forecastEl);
 
 // add event listeners to form and button container
 userFormEl.addEventListener("submit", formSubmitHandler);
