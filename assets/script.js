@@ -22,17 +22,17 @@ var formSubmitHandler = function(event) {
     }
 };
 
-// var buttonClickHandler = function(event) {
-//     // get city attribute from the clicked element
-//     var cityBtn = event.target.getAttribute("data-city");
+var buttonClickHandler = function(event) {
+    // get city attribute from the clicked element
+    var cityBtn = event.target.getAttribute("data-city");
 
-//     if (cityBtn) {
-//         getWeatherForecast(cityBtn);
+    if (cityBtn) {
+        getWeatherForecast(cityBtn);
 
-//         // clear old content
-//         forecastContainerEl.textContent = "";
-//     }
-// };
+        // clear old content
+        forecastContainerEl.textContent = "";
+    }
+};
 
 var getCoordinates = function(city) {
     // format one call api url
@@ -65,33 +65,33 @@ var getForecast = function(latitude, longitude) {
     .catch(function(error) {
         alert("Unable to connect to Forecaster");
     })
+
+    //display forecast
+    forecastContainerEl.innerHTML = "Temparature:" + " " + data.main.temp + " " + '\u00B0F';
+
+    // append to page 
+    forecastContainerEl.appendChild(forecastEl);
+};
+
+var displayForecast = function(forecast, searchTerm) {
+    // check if api returned the forecast
+    if (forecast.length === 0) {
+        forecastContainerEl.textContent = "No information found.";
+        return;
+    }
+
+    citySearchTerm.textContent = searchTerm;
+
+    // loop over forecast
+    for (var i=0; i < forecast.length; i++) {
+        // format forecast
+        var cityName = forecast[i].weather.description;
+    }
+
+    // append container to the dom
+    forecastContainerEl.appendChild(forecastEl);
 }
-
-// var displayForecast = function(forecast, searchTerm) {
-//     // check if api returned the forecast
-//     if (forecast.length === 0) {
-//         forecastContainerEl.textContent = "No information found.";
-//         return;
-//     }
-
-//     citySearchTerm.textContent = searchTerm;
-
-//     // loop over forecast
-//     for (var i=0; i < forecast.length; i++) {
-//         // format forecast
-//         var cityName = forecast[i].weather.description;
-//     }
-
-//     // append container to the dom
-//     forecastContainerEl.appendChild(forecastEl);
-// }
-
-//display forecast
-forecastContainerEl.innerHTML = "Temparature:" + " " + data.main.temp + " " + '\u00B0F';
-
-// append to page 
-forecastContainerEl.appendChild(forecastEl);
 
 // add event listeners to form and button container
 userFormEl.addEventListener("submit", formSubmitHandler);
-// cityButtonsEl.addEventListener("click", buttonClickHandler);
+cityButtonsEl.addEventListener("click", buttonClickHandler);
